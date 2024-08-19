@@ -4,9 +4,8 @@ import PyPDF2
 import pandas as pd
 
 class PDFHandler:
-    def __init__(self, pdf_path, output_path_txt, output_path_excel):
+    def __init__(self, pdf_path, output_path_excel):
         self.pdf_path = pdf_path
-        self.output_path_txt = output_path_txt
         self.output_path_excel = output_path_excel
 
     def read_pdf(self):
@@ -17,10 +16,6 @@ class PDFHandler:
                 page = reader.pages[page_number]
                 content += page.extract_text()
             return content
-
-    def save_to_txt(self, content):
-        with open(self.output_path_txt, 'w', encoding='utf-8') as file:
-            file.write(content)
 
     def extract_data(self, text):
         patterns = {
@@ -46,16 +41,14 @@ class PDFHandler:
 
 def main():
     pdf_path = r'C:\Users\rdosa\source\repos\PythonApplication3\Bloqueio-Sisbajud.pdf'
-    output_path_txt = r'C:\Users\rdosa\source\repos\PythonApplication3\resultado.txt'
     output_path_excel = r'C:\Users\rdosa\source\repos\PythonApplication3\informacoes_extraidas.xlsx'
     
-    pdf_handler = PDFHandler(pdf_path, output_path_txt, output_path_excel)
+    pdf_handler = PDFHandler(pdf_path, output_path_excel)
     
-    # Leia o PDF e salve o conteúdo em um arquivo de texto
+    # Leia o PDF e mantenha o conteúdo em uma variável
     content = pdf_handler.read_pdf()
-    pdf_handler.save_to_txt(content)
     
-    # Extraia os dados do arquivo de texto e salve em um arquivo Excel
+    # Extraia os dados do conteúdo do PDF e salve em um arquivo Excel
     extracted_data = pdf_handler.extract_data(content)
     pdf_handler.save_to_excel(extracted_data)
 
