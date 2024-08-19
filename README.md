@@ -1,4 +1,4 @@
-# PDF-Data-Extractor
+# PDF-Data-Extractor v1.0.0
  Este repositório contém um script Python para extração de informações específicas de arquivos PDF e armazenamento desses dados em formatos de texto e Excel. A ferramenta lê o conteúdo de um arquivo PDF, salva o texto extraído em um arquivo .txt e utiliza expressões regulares para identificar e extrair dados-chave, como Número do Ofício, Número do Processo, Juiz Demandante, CPF/CNPJ, Data da Recepção e Número do Protocolo. Esses dados são então organizados e salvos em um arquivo Excel (.xlsx).
 
 ### Recursos:
